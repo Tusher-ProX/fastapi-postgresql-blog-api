@@ -1,0 +1,31 @@
+[project]
+name = "backendfastapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.18.5",
+    "annotated-doc==0.0.4",
+    "annotated-types==0.7.0",
+    "anyio==4.14.0",
+    "click==8.4.1",
+    "colorama==0.4.6",
+    "dnspython==2.8.0",
+    "email-validator==2.3.0",
+    "fastapi==0.138.0",
+    "greenlet==3.5.2",
+    "h11==0.16.0",
+    "idna==3.18",
+    "psycopg>=3.3.4",
+    "pwdlib[argon2]>=0.3.0",
+    "pydantic==2.13.4",
+    "pydantic-core==2.46.4",
+    "pydantic-settings>=2.14.2",
+    "pyjwt>=2.13.0",
+    "python-multipart==0.0.32",
+    "sqlalchemy==2.0.51",
+    "typing-extensions==4.15.0",
+    "typing-inspection==0.4.2",
+    "uvicorn==0.49.0",
+]
