@@ -3,11 +3,11 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from typing import Annotated, Optional
 
-from schemas.posts import CreatePosts, ResponsePost, Post as shemasPost
-from core.database import get_db
-from models.posts import Post, Vote
-from models.users import User
-from core.security import get_current_user
+from app.schemas.posts import CreatePosts, ResponsePost, Post as shemasPost
+from app.core.database import get_db
+from app.models.posts import Post, Vote
+from app.models.users import User
+from app.core.security import get_current_user
 
 router = APIRouter(
     prefix="/posts",
@@ -19,7 +19,8 @@ def get_all_posts(
     search: str = "",
     limit: int = 100,
     skip: int = 0,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    get_current_user: User = Depends(get_current_user)
 ):
     posts = (
         db.query(Post, func.count(Vote.post_id).label("votes"))
@@ -48,7 +49,8 @@ def get_all_posts(
 @router.get("/{post_id}", response_model=ResponsePost, status_code=status.HTTP_200_OK)
 def get_post(
     post_id: Annotated[int, Path()],
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    get_current_user: User = Depends(get_current_user)
 ):
     result = (
         db.query(
@@ -108,13 +110,17 @@ def delete_post(
             status_code=status.HTTP_404_NOT_FOUND,
             detail= f'No post found'
         )
+
+    if deleted_post.user_id != get_current_user.userid:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Not authorized to perform requested action")
     
     post.delete(synchronize_session=False)
     db.commit()
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-@router.put("/{post_id}", response_model=shemasPost, status_code=status.HTTP_202_ACCEPTED)
+@router.put("/{post_id}", response_model=shemasPost, status_code=status.HTTP_200_OK)
 def update_post(
     post_id: Annotated[int, Path()], 
     request: CreatePosts, 
@@ -131,7 +137,10 @@ def update_post(
             status_code=status.HTTP_404_NOT_FOUND,
             detail= f'No post found'
         )
-    
+
+    if post.user_id != get_current_user.userid:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Not authorized to perform requested action")
     
     post_query.update(request.model_dump(), synchronize_session=False)  # type: ignore[arg-type]
     db.commit()

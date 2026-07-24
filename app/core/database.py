@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from sqlalchemy.ext.declarative import declarative_base
-from core.config import settings
+from app.core.config import settings
 
 # load_dotenv() # instead of this we use config file as settings to load .env file
 

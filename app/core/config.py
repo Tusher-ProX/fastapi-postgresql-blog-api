@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     secret_key: SecretStr
     algorithm: str = "HS256"
-    access_token_expires_minutes: int = 30
+    access_token_expires_minutes: int = 300000
     database_url: str
 
 

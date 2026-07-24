@@ -6,10 +6,10 @@ from jwt.exceptions import InvalidTokenError
 from datetime import UTC, datetime, timedelta
 import jwt
 
-from core.config import settings
-from schemas.users import TokenData
+from app.core.config import settings
+from app.schemas.users import TokenData
 from .database import get_db
-from models.users import User
+from app.models.users import User
 
 password_hash = PasswordHash.recommended()
 oauth2_scheme =  OAuth2PasswordBearer(tokenUrl="/login")
