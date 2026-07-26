@@ -100,6 +100,7 @@ def test_user2(client):
 
 @pytest.fixture
 def test_posts(test_user, session, test_user2):
+    
     posts_data = [
         {
             "title": "1st title",
