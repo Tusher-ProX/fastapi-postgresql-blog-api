@@ -8,6 +8,6 @@ on:
 
 jobs:
   build:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      -run: echo "This is my first job"
+      - run: echo "This is my first job"
