@@ -13,7 +13,7 @@ jobs:
       name: testing
 
     env:
-      DATABASE_URL: ${{secrets.DATABASE_URL}}_test
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
 
     services:

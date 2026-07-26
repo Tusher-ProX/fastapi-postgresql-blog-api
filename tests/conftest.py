@@ -9,7 +9,7 @@ from app.core.database import Base, get_db
 from app.models.posts import Post
 from app.main import app
 
-database_url = settings.database_url
+database_url = settings.database_url+"_test"
 
 engine = create_engine(database_url)
 
