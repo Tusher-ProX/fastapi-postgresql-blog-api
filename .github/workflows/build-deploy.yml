@@ -38,6 +38,6 @@ jobs:
       - name: install dependencies
         run: uv sync
 
-      # - name: test with pytest
-      #   run: |
-      #     python -m pytest
+      - name: test with pytest
+        run: |
+          python -m pytest
