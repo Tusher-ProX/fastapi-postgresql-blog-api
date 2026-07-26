@@ -26,4 +26,18 @@ jobs:
         with: 
           python-version: "3.13.14"
 
-      - run: python --version
+      - name: Check python version
+        run: python --version
+
+      - name: Install uv 
+        uses: yezz123/setup-uv@v4
+      
+      - name: Check uv version
+        run: uv --version
+
+      - name: install dependencies
+        run: uv sync
+
+      # - name: test with pytest
+      #   run: |
+      #     python -m pytest
