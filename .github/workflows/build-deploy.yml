@@ -64,3 +64,13 @@ jobs:
 
       - name: Fixed bug
         run: echo "Works well and no bug found"
+
+  deploy:
+    environment: 
+      name: production
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: start deploy
+        run: echo "deploy start"

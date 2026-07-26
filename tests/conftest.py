@@ -9,7 +9,7 @@ from app.core.database import Base, get_db
 from app.models.posts import Post
 from app.main import app
 
-database_url = settings.database_url+"_test"
+database_url = settings.database_url
 
 engine = create_engine(database_url)
 
@@ -100,7 +100,7 @@ def test_user2(client):
 
 @pytest.fixture
 def test_posts(test_user, session, test_user2):
-    
+
     posts_data = [
         {
             "title": "1st title",
