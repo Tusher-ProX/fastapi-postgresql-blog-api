@@ -25,7 +25,7 @@ def vote(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Post with id: {vote.post_id} does not exist")
     
-    vote_query = db.query(modelPost.Vote).filter(
+    vote_query = db.query(modelPost.Vote).filter(   
         modelPost.Vote.post_id == vote.post_id, modelPost.Vote.user_id == current_user.userid)
     
     found_vote = vote_query.first()

@@ -1,0 +1,13 @@
+name: build and deploy code
+
+on:
+  - push 
+  - pull_request
+
+# on: [push, pull_request]
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      -run: echo "This is my first job"
