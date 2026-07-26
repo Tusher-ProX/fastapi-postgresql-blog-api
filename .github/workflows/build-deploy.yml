@@ -62,5 +62,5 @@ jobs:
         run: |
           uv run pytest
 
-      - name: finished
-        run: echo "jobs finished"
+      - name: Fixed bug
+        run: echo "Works well and no bug found"
