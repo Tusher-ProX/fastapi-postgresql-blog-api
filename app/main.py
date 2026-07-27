@@ -16,4 +16,4 @@ app.include_router(api_router)
 
 @app.get("/", tags=["home"])
 def home():
-    return {"data": "Home page"}
+    return {"data": "Home page update automatically"}
