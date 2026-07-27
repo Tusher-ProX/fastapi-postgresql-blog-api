@@ -6,7 +6,7 @@ from app.core.config import settings
 def test_root(client):
     res = client.get("/")
 
-    assert res.json().get("data") == "Abirek gua mari"
+    assert res.json().get("data") == "Tusher hoilo valo lok"
 
 def test_create_User(client):
     
